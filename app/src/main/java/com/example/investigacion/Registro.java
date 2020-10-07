@@ -20,10 +20,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class Registro extends AppCompatActivity {
-
-    //este es un comentario
-    //Este es otro comentario
-
     private EditText txtNegocio, txtPropietario, txtInfo;
     private String Categoria, Ubicacion;
     private LocationManager ubicacion;
@@ -36,6 +32,28 @@ public class Registro extends AppCompatActivity {
         this.txtPropietario = findViewById(R.id.txtNombreNegocio);
         this.txtInfo = findViewById(R.id.txtInfo);
         this.Categoria="";
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+            },1000);
+        }
+        ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+            try {
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                List<Address> list = geocoder.getFromLocation(
+                        loc.getLatitude(), loc.getLongitude(), 1);
+                if (!list.isEmpty()) {
+                    Address DirCalle = list.get(0);
+                    String calle = DirCalle.getAddressLine(0);
+                    this.Ubicacion = calle;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -67,39 +85,13 @@ public class Registro extends AppCompatActivity {
             Toast.makeText(this, longitud, Toast.LENGTH_SHORT).show();
         }
     }*/
-    public String obtenerUbicacion(){
-        String posUbicacion="";
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
-            },1000);
-        }
 
-        ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-            try {
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                List<Address> list = geocoder.getFromLocation(
-                        loc.getLatitude(), loc.getLongitude(), 1);
-                if (!list.isEmpty()) {
-                    Address DirCalle = list.get(0);
-                    String calle = DirCalle.getAddressLine(0);
-                    posUbicacion = calle;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return posUbicacion;
-    }
     public void Ubicacion(View v) {
         Toast.makeText(this, Ubicacion, Toast.LENGTH_SHORT).show();
     }
 
     public void Aceptar_onClick(View v){
-        this.Ubicacion=obtenerUbicacion();
+
         String NombreNegocio = txtNegocio.getText().toString();
         String NombrePropietario = txtPropietario.getText().toString();
         String Informacion = txtInfo.getText().toString();
