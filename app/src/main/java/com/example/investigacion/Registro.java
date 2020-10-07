@@ -32,30 +32,6 @@ public class Registro extends AppCompatActivity {
         this.txtPropietario = findViewById(R.id.txtNombreNegocio);
         this.txtInfo = findViewById(R.id.txtInfo);
         this.Categoria="";
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
-            },1000);
-
-        }
-        ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-            try {
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                List<Address> list = geocoder.getFromLocation(
-                        loc.getLatitude(), loc.getLongitude(), 1);
-                if (!list.isEmpty()) {
-                    Address DirCalle = list.get(0);
-                    String calle = DirCalle.getAddressLine(0);
-                    Ubicar = calle;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
-        }
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -88,32 +64,82 @@ public class Registro extends AppCompatActivity {
         }
     }*/
 
-    public void localizar(){
+    public boolean registrarUbicacion(){
+        boolean verificar=true;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+            },1000);
 
+        }
+        ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(loc == null){
+            verificar=false;
+        }
+        else{
+            if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+                try {
+                    Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                    List<Address> list = geocoder.getFromLocation(
+                            loc.getLatitude(), loc.getLongitude(), 1);
+                    if (!list.isEmpty()) {
+                        Address DirCalle = list.get(0);
+                        String calle = DirCalle.getAddressLine(0);
+                        Ubicar = calle;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
 
+                }
+            }
+        }
+        return verificar;
     }
     public void Ubicacion(View v) {
-        Toast.makeText(this, Ubicar, Toast.LENGTH_SHORT).show();
+        if(registrarUbicacion()){
+            Toast.makeText(this, Ubicar, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Detectando ubicacion", Toast.LENGTH_SHORT).show();
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //ABRIR GPS AQUI
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+        }
     }
 
     public void Aceptar_onClick(View v){
+        if(registrarUbicacion()){
+            String NombreNegocio = txtNegocio.getText().toString();
+            String NombrePropietario = txtPropietario.getText().toString();
+            String Informacion = txtInfo.getText().toString();
 
-        String NombreNegocio = txtNegocio.getText().toString();
-        String NombrePropietario = txtPropietario.getText().toString();
-        String Informacion = txtInfo.getText().toString();
-
-        if(NombreNegocio.equals("") || NombrePropietario.equals("") || Informacion.equals("") || Categoria.equals("")){
-            Toast.makeText(this, "Debe completar los datos antes de enviar", Toast.LENGTH_SHORT).show();
+            if(NombreNegocio.equals("") || NombrePropietario.equals("") || Informacion.equals("") || Categoria.equals("")){
+                Toast.makeText(this, "Debe completar los datos antes de enviar", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent mensajePadre = new Intent();
+                mensajePadre.putExtra("negocio", NombreNegocio);
+                mensajePadre.putExtra("propietario", NombrePropietario);
+                mensajePadre.putExtra("informacion", Informacion);
+                mensajePadre.putExtra("categoria",Categoria);
+                mensajePadre.putExtra("ubicacion",Ubicar);
+                setResult(RESULT_OK, mensajePadre);
+                finish();
+            }
         }
-        else {
-            Intent mensajePadre = new Intent();
-            mensajePadre.putExtra("negocio", NombreNegocio);
-            mensajePadre.putExtra("propietario", NombrePropietario);
-            mensajePadre.putExtra("informacion", Informacion);
-            mensajePadre.putExtra("categoria",Categoria);
-            mensajePadre.putExtra("ubicacion",Ubicar);
-            setResult(RESULT_OK, mensajePadre);
-            finish();
+        else{
+            Toast.makeText(this, "Ocurrio un error al detectar su ubicacion de forma automatica, por favor preciona Ubicacion para detectarla de forma manual", Toast.LENGTH_SHORT).show();
         }
     }
 }
