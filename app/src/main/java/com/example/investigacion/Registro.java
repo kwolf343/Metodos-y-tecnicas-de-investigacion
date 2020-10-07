@@ -21,7 +21,7 @@ import java.util.Locale;
 
 public class Registro extends AppCompatActivity {
     private EditText txtNegocio, txtPropietario, txtInfo;
-    private String Categoria, Ubicacion;
+    private String Categoria, Ubicar="";
     private LocationManager ubicacion;
     public static final int ID_CATEGORIAS=1;
     @Override
@@ -37,6 +37,7 @@ public class Registro extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
             },1000);
+
         }
         ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -48,10 +49,11 @@ public class Registro extends AppCompatActivity {
                 if (!list.isEmpty()) {
                     Address DirCalle = list.get(0);
                     String calle = DirCalle.getAddressLine(0);
-                    this.Ubicacion = calle;
+                    Ubicar = calle;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+
             }
         }
     }
@@ -86,8 +88,12 @@ public class Registro extends AppCompatActivity {
         }
     }*/
 
+    public void localizar(){
+
+
+    }
     public void Ubicacion(View v) {
-        Toast.makeText(this, Ubicacion, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Ubicar, Toast.LENGTH_SHORT).show();
     }
 
     public void Aceptar_onClick(View v){
@@ -105,7 +111,7 @@ public class Registro extends AppCompatActivity {
             mensajePadre.putExtra("propietario", NombrePropietario);
             mensajePadre.putExtra("informacion", Informacion);
             mensajePadre.putExtra("categoria",Categoria);
-            mensajePadre.putExtra("ubicacion",Ubicacion);
+            mensajePadre.putExtra("ubicacion",Ubicar);
             setResult(RESULT_OK, mensajePadre);
             finish();
         }

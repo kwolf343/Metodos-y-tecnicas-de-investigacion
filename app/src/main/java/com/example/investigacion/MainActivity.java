@@ -57,13 +57,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnRegistro_onClick(View v){
-        if(!estadoGPS.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+        Intent frmRegistro = new Intent(this, Registro.class);
+        startActivityForResult(frmRegistro,ID_NEGOCIO);
+        /*if(!estadoGPS.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "Activa en GPS para acceder al registro de vendedor", Toast.LENGTH_SHORT).show();
         }
         else {
             Intent frmRegistro = new Intent(this, Registro.class);
             startActivityForResult(frmRegistro,ID_NEGOCIO);
-        }
+        }*/
     }
     public void btnListaNegocios_onClick(View v){
         Intent frmListaNegocios = new Intent(this, Lista_Negocios.class);
