@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Investigacion</string>
+    <string name="titulo">Nombre</string>
+    <string name="btnBuscar">Buscar Negocios</string>
+    <string name="btnVendedor">Vendedor</string>
+    <string name="lblGPS">GPS</string>
+    <string name="lblRegistro">Registro de vendedores</string>
+    <string name="lblNombreNegocio">Nombre del negocio:</string>
+    <string name="lblPropietario">Nombre del Propietario:</string>
+    <string name="lblCategoria">Categoria:</string>
+    <string name="btnLista">Ver lista</string>
+    <string name="lblUbicacion">Ubicación</string>
+    <string name="btnUbicacion">Ver ubicación</string>
+    <string name="lblInfo">Información</string>
+    <string name="btnBack">Regresar</string>
+    <string name="btnAceptar">Aceptar</string>
+    <string name="lstNegocios">Negocios</string>
+</resources>
