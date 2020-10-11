@@ -22,6 +22,7 @@ import java.util.Locale;
 public class Registro extends AppCompatActivity {
 
     //este es un comentario
+    //Este es otro comentario
 
     private EditText txtNegocio, txtPropietario, txtInfo;
     private String Categoria, Ubicacion;
