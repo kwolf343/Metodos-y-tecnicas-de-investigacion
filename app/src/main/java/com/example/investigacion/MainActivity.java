@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public static List<Negocio> datosNegocios = new ArrayList<>();
     private ImageButton btnImagen;
     public static final int ID_NEGOCIO=1;
-    private String Negocio, Propietario, Informacion, Categoria, Ubicacion;
+    private String Negocio, Propietario, Informacion, Categoria, Ubicacion, Lat, Long;
     private LocationManager estadoGPS;
     private Button pp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             btnImagen.setImageResource(android.R.drawable.checkbox_on_background);
         }
+
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -51,12 +53,16 @@ public class MainActivity extends AppCompatActivity {
                 this.Informacion = data.getStringExtra("informacion");
                 this.Categoria = data.getStringExtra("categoria");
                 this.Ubicacion = data.getStringExtra("ubicacion");
+                this.Lat = data.getStringExtra("latitud");
+                this.Long = data.getStringExtra("longitud");
                 Negocio n = new Negocio();
                 n.setNombre(Negocio);
                 n.setPropietario(Propietario);
                 n.setInformacion(Informacion);
                 n.setCategoria(Categoria);
                 n.setUbicacion(Ubicacion);
+                n.setCoordenada_Latitud(Lat);
+                n.setCoordenada_Longitud(Long);
                 datosNegocios.add(n);
             }
         }
@@ -89,5 +95,8 @@ public class MainActivity extends AppCompatActivity {
         }else{
             btnImagen.setImageResource(android.R.drawable.checkbox_on_background);
         }
+    }
+    public void verNegocio_Onclick(View v){
+        Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show();
     }
 }

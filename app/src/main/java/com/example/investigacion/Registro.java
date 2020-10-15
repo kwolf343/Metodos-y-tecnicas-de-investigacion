@@ -25,7 +25,7 @@ public class Registro extends AppCompatActivity {
     //Este es otro comentario
 
     private EditText txtNegocio, txtPropietario, txtInfo;
-    private String Categoria, Ubicacion;
+    private String Categoria, Ubicacion, Latitud, Longitud;
     private LocationManager ubicacion;
     public static final int ID_CATEGORIAS=1;
     @Override
@@ -87,6 +87,8 @@ public class Registro extends AppCompatActivity {
                     Address DirCalle = list.get(0);
                     String calle = DirCalle.getAddressLine(0);
                     posUbicacion = calle;
+                    this.Latitud = String.valueOf(loc.getLatitude());
+                    this.Longitud = String.valueOf(loc.getLongitude());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -114,6 +116,8 @@ public class Registro extends AppCompatActivity {
             mensajePadre.putExtra("informacion", Informacion);
             mensajePadre.putExtra("categoria",Categoria);
             mensajePadre.putExtra("ubicacion",Ubicacion);
+            mensajePadre.putExtra("latitud",Latitud);
+            mensajePadre.putExtra("longitud",Longitud);
             setResult(RESULT_OK, mensajePadre);
             finish();
         }

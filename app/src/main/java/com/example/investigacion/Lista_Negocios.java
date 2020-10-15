@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.investigacion.Adaptadores.AdaptadorNegocio;
 import com.example.investigacion.Adaptadores.Negocio;
@@ -32,5 +35,10 @@ public class Lista_Negocios extends AppCompatActivity {
         this.listNegocios.setHasFixedSize(true);
         this.listNegocios.setLayoutManager(this.manager);
         this.listNegocios.setAdapter(this.adaptador);
+    }
+    public void saludar(View v){
+        TextView lblN = findViewById(R.id.lblNombre);
+        String name = lblN.getText().toString();
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
     }
 }

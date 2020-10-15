@@ -30,6 +30,8 @@ public class AdaptadorNegocio extends RecyclerView.Adapter<ViewHolderNegocio>{
         holder.getTxtPropietario().setText(this.listaNegocios.get(position).getPropietario());
         holder.getTxtCategoria().setText(this.listaNegocios.get(position).getCategoria());
         holder.getTxtUbicacion().setText(this.listaNegocios.get(position).getUbicacion());
+        holder.getTxtLat().setText(this.listaNegocios.get(position).getCoordenada_Latitud());
+        holder.getTxtLong().setText(this.listaNegocios.get(position).getCoordenada_Longitud());
     }
 
     @Override

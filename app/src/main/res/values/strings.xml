@@ -27,5 +27,5 @@
     <string name="RegistroCredencial">Credencial</string>
     <string name="RegistroDescripcion">Decripcion</string>
     <string name="RegistroBTNregistrar">Registrar</string>
-
+    <string name="btnVerNegocio">Ver Negocio</string>
 </resources>
