@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -26,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
     public static final int ID_NEGOCIO=1;
     private String Negocio, Propietario, Informacion, Categoria, Ubicacion;
     private LocationManager estadoGPS;
+    private Button pp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         this.btnImagen = findViewById(R.id.btnGPS);
         estadoGPS = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!estadoGPS.isProviderEnabled(LocationManager.GPS_PROVIDER)){

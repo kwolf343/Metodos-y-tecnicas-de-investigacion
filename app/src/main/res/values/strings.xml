@@ -15,4 +15,17 @@
     <string name="btnBack">Regresar</string>
     <string name="btnAceptar">Aceptar</string>
     <string name="lstNegocios">Negocios</string>
+    <string name="loginUsuario">Usuario</string>
+    <string name="loginPassword">Credencial</string>
+    <string name="LoginRegistro">Registrarse</string>
+    <string name="login">Login</string>
+    <string name="loginbtnIngresar">Ingresar</string>
+    <string name="Registro">Registro</string>
+    <string name="RegistroNombre">Nombre</string>
+    <string name="RegistroNegocio">Nombre del negocio</string>
+    <string name="RegistroCorreo">Usuario</string>
+    <string name="RegistroCredencial">Credencial</string>
+    <string name="RegistroDescripcion">Decripcion</string>
+    <string name="RegistroBTNregistrar">Registrar</string>
+
 </resources>
