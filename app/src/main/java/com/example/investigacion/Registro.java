@@ -32,8 +32,8 @@ public class Registro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        this.txtNegocio = findViewById(R.id.txtNombrePropietario);
-        this.txtPropietario = findViewById(R.id.txtNombreNegocio);
+        this.txtNegocio = findViewById(R.id.txtNombreNegocio);
+        this.txtPropietario = findViewById(R.id.txtNombrePropietario);
         this.txtInfo = findViewById(R.id.txtInfo);
         this.Categoria="";
     }
@@ -51,22 +51,6 @@ public class Registro extends AppCompatActivity {
         startActivityForResult(frmListado,ID_CATEGORIAS);
     }
 
-    //Localizacion obtiene la latitud y longitud de mi dispositivo
-    /*public void Localizacion(View v) {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
-            },1000);
-        }
-
-        ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if(ubicacion !=null){
-            String latitud = String.valueOf(loc.getLatitude());
-            String longitud = String.valueOf(loc.getLongitude());
-            Toast.makeText(this, longitud, Toast.LENGTH_SHORT).show();
-        }
-    }*/
     public String obtenerUbicacion(){
         String posUbicacion="";
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

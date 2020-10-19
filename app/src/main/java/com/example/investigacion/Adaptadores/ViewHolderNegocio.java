@@ -19,19 +19,12 @@ public class ViewHolderNegocio extends RecyclerView.ViewHolder{
     public ViewHolderNegocio(@NonNull View itemView) {
         super(itemView);
         this.txtNombre = itemView.findViewById(R.id.lblNombre);
-        this.txtPropietario = itemView.findViewById(R.id.lblPropietario);
         this.txtCategoria = itemView.findViewById(R.id.lblCategoria);
         this.txtUbicacion = itemView.findViewById(R.id.lblUbicacion);
-        this.txtLat = itemView.findViewById(R.id.lblLat);
-        this.txtLong = itemView.findViewById(R.id.lblLong);
     }
 
     public TextView getTxtNombre() {
         return txtNombre;
-    }
-
-    public TextView getTxtPropietario() {
-        return txtPropietario;
     }
 
     public TextView getTxtCategoria() {
@@ -40,13 +33,5 @@ public class ViewHolderNegocio extends RecyclerView.ViewHolder{
 
     public TextView getTxtUbicacion() {
         return txtUbicacion;
-    }
-
-    public TextView getTxtLat() {
-        return txtLat;
-    }
-
-    public TextView getTxtLong() {
-        return txtLong;
     }
 }
