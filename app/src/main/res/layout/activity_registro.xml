@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     android:orientation="vertical"
-    android:background="@drawable/bg_color"
     tools:context=".Registro">
 
     <TextView
@@ -35,6 +34,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:text="@string/lblNombreNegocio"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="14sp" />
 
         <EditText
@@ -54,7 +54,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:text="@string/lblPropietario" />
+            android:text="@string/lblPropietario"
+            android:textColor="@color/cardview_dark_background" />
 
         <EditText
             android:id="@+id/txtNombrePropietario"
@@ -73,7 +74,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:text="@string/lblInfo" />
+            android:text="@string/lblInfo"
+            android:textColor="@color/cardview_dark_background" />
 
         <EditText
             android:id="@+id/txtInfo"
@@ -99,7 +101,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="@android:color/background_light"
+                android:background="@drawable/btn_r"
                 android:onClick="listarCategorias_onClick"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -109,7 +111,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/lblCategoria" />
+                    android:text="@string/lblCategoria"
+                    android:textColor="@color/cardview_dark_background" />
 
                 <ImageButton
                     android:id="@+id/imageButton"
@@ -127,7 +130,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="@android:color/background_light"
+                android:background="@drawable/btn_r"
                 android:onClick="Ubicacion"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -137,7 +140,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/lblUbicacion" />
+                    android:text="@string/lblUbicacion"
+                    android:textColor="@color/cardview_dark_background" />
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -163,8 +167,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/btn_r"
                 android:layout_weight="1"
+                android:background="@drawable/btn_r"
                 android:text="@string/btnBack" />
 
             <Button
@@ -174,8 +178,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:onClick="Aceptar_onClick"
                 android:background="@drawable/btn_r"
+                android:onClick="Aceptar_onClick"
                 android:text="@string/btnAceptar" />
         </LinearLayout>
 

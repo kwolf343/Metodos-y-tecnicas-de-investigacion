@@ -5,12 +5,14 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,13 +23,13 @@ import java.util.Locale;
 
 public class Registro extends AppCompatActivity {
 
-    //este es un comentario
-    //Este es otro comentario
-
     private EditText txtNegocio, txtPropietario, txtInfo;
     private String Categoria, Ubicacion, Latitud, Longitud;
     private LocationManager ubicacion;
     public static final int ID_CATEGORIAS=1;
+    private SharedPreferences vendedores;
+    public static final String ARCHIVO = "archivo";
+    public static final String KEY = "llave";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class Registro extends AppCompatActivity {
         this.txtPropietario = findViewById(R.id.txtNombrePropietario);
         this.txtInfo = findViewById(R.id.txtInfo);
         this.Categoria="";
+        this.vendedores = getSharedPreferences(ARCHIVO,MODE_PRIVATE);
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -94,16 +97,29 @@ public class Registro extends AppCompatActivity {
             Toast.makeText(this, "Debe completar los datos antes de enviar", Toast.LENGTH_SHORT).show();
         }
         else {
-            Intent mensajePadre = new Intent();
-            mensajePadre.putExtra("negocio", NombreNegocio);
-            mensajePadre.putExtra("propietario", NombrePropietario);
-            mensajePadre.putExtra("informacion", Informacion);
-            mensajePadre.putExtra("categoria",Categoria);
-            mensajePadre.putExtra("ubicacion",Ubicacion);
-            mensajePadre.putExtra("latitud",Latitud);
-            mensajePadre.putExtra("longitud",Longitud);
-            setResult(RESULT_OK, mensajePadre);
+            if(this.vendedores!=null){
+                String lista = vendedores.getString(KEY,"");
+                if(SharedPreferenceVendedores.ListaNegocios(lista).size()==0){
+                    SharedPreferences.Editor editor = this.vendedores.edit();
+                    editor.putString(KEY, NombreNegocio+"-"+NombrePropietario+"-"+Informacion+"-"+Categoria+"-"+Ubicacion+"-"+Latitud+"-"+Longitud);
+                    if(editor.commit()){
+                        Log.d("TAG","Informacion guardada");
+                    }else {
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    SharedPreferences.Editor editor = this.vendedores.edit();
+                    editor.putString(KEY, vendedores.getString(KEY,"")+";"+NombreNegocio+"-"+NombrePropietario+"-"+Informacion+"-"+Categoria+"-"+Ubicacion+"-"+Latitud+"-"+Longitud);
+                    if(editor.commit()){
+                        Log.d("TAG","Informacion guardada");
+                    }else {
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
             finish();
         }
+
     }
 }

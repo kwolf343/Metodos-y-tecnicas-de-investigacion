@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/ListadoCategorias"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".ListaCategorias"
-tools:listitem="@android:layout/simple_list_item_1"
-android:textColor="#000000"
-android:background="#E8EAF6"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ListadoCategorias"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    android:textColor="#000000"
+    tools:context=".ListaCategorias"
+    tools:listitem="@android:layout/simple_list_item_1">
 
 </ListView>

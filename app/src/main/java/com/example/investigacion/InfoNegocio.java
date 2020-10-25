@@ -2,6 +2,7 @@ package com.example.investigacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,12 +21,14 @@ public class InfoNegocio extends AppCompatActivity {
     private Button btnUbicacion;
     private String Nombre, Propietario, Categoria, Ubicacion, Informacion, Lat, Long;
     private int Indice;
+    private SharedPreferences vendedores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_negocio);
         ////////////////////////////////////////////////////////////////////////////////////////////
-        this.datosDeNegocio = MainActivity.datosNegocios;
+        this.vendedores = getSharedPreferences(Registro.ARCHIVO,MODE_PRIVATE);
+        this.datosDeNegocio = SharedPreferenceVendedores.ListaNegocios(vendedores.getString(Registro.KEY,""));
         this.txtNombre = findViewById(R.id.txtNombre_Negocio);
         this.txtPropietario = findViewById(R.id.txtPropietario_Negocio);
         this.txtCategoria = findViewById(R.id.txtCategoria_Negocio);

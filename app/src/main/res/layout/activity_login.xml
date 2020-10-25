@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_color"
+    android:background="@color/cardview_light_background"
     tools:context=".Login">
 
     <TextView
@@ -13,12 +13,11 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/LoginUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/LoginUser"
@@ -46,16 +45,17 @@
 
     <Button
         android:id="@+id/btnLoginIngresar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/loginbtnIngresar"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/btn_r"
+        android:text="@string/loginbtnIngresar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginPass"
+        app:layout_constraintVertical_bias="0.19" />
 
     <TextView
         android:id="@+id/txvRegistro"
@@ -65,9 +65,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLoginIngresar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

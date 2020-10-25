@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Login extends AppCompatActivity {
+    private int identificador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +31,21 @@ public class Login extends AppCompatActivity {
         final TextView Registro = (TextView) findViewById(R.id.txvRegistro);
         final EditText UsuarioL = (EditText) findViewById(R.id.LoginUser);
         final EditText CredencialL = (EditText) findViewById(R.id.LoginPass);
+        this.identificador = Integer.parseInt(getIntent().getStringExtra("id"));
 
 
         Registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Login.this, RegistroUsuario.class);
-                startActivity(i);
-                finish();
+                if(identificador == 1){
+                    Intent i = new Intent(Login.this, RegistroUsuario.class);
+                    startActivity(i);
+                    finish();
+                }else {
+                    Intent i = new Intent(Login.this, Registro.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,11 +28,13 @@ public class Lista_Negocios extends AppCompatActivity {
     private RecyclerView listNegocios;
     private AdaptadorNegocio adaptador;
     private LinearLayoutManager manager;
+    private SharedPreferences vendedores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista__negocios);
-        datosDeNegocio = MainActivity.datosNegocios;
+        this.vendedores = getSharedPreferences(Registro.ARCHIVO,MODE_PRIVATE);
+        datosDeNegocio = SharedPreferenceVendedores.ListaNegocios(vendedores.getString(Registro.KEY,""));
         this.listNegocios = findViewById(R.id.listNegocios);
         this.manager = new LinearLayoutManager(this);
         this.adaptador = new AdaptadorNegocio(datosDeNegocio);
