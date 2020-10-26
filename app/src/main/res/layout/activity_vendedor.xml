@@ -16,11 +16,11 @@ tools:context=".Vendedor">
     android:textAlignment="center"
     android:textSize="18sp" />
 
-<ImageView
-    android:id="@+id/imageView"
-    android:layout_width="match_parent"
-    android:layout_height="113dp"
-    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        tools:srcCompat="@drawable/logo_simetrico" />
 
 <TextView
     android:id="@+id/txtPropietarioDelNegocio"
