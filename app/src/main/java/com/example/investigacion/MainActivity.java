@@ -30,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     public void btnListaNegocios_onClick(View v){
         Intent frmListaNegocios = new Intent(this, Lista_Negocios.class);
         startActivity(frmListaNegocios);
     }
+
     public void btnLogin1_onClick(View v){
         if(!estadoGPS.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "Activa en GPS para acceder al login", Toast.LENGTH_SHORT).show();
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     public void btnLogin2_onClick(View v){
         if(!estadoGPS.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "Activa en GPS para acceder al login", Toast.LENGTH_SHORT).show();
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(frmLogin);
         }
     }
+
     public void CambiarImagen(View v){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,new String[]{
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             },1000);}
         startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
     }
+
     public void onResume(){
         super.onResume();
         if(!estadoGPS.isProviderEnabled(LocationManager.GPS_PROVIDER)){

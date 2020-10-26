@@ -63,9 +63,17 @@ public class Login extends AppCompatActivity {
                             boolean ok = jsonRespuesta.getBoolean("success");
                             if(ok == true){
                                 Toast.makeText(Login.this, "Datos Correctos", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(Login.this, MainActivity.class);
-                                startActivity(i);
-                                finish();
+
+                               if(identificador == 1){
+                                   Intent i = new Intent(Login.this, Lista_Negocios.class);
+                                   startActivity(i);
+                                   finish();
+                               }else{
+                                   Intent i = new Intent(Login.this, ofertas.class);
+                                   startActivity(i);
+                                   finish();
+                               }
+
                             }else{
                                 Toast.makeText(Login.this, "Datos Incorrectos", Toast.LENGTH_SHORT).show();
                             }

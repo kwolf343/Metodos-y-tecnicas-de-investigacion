@@ -24,20 +24,18 @@ public class RegistroUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_registro_usuario);
 
         final EditText nombreT = (EditText) findViewById(R.id.Rnombre);
-        final EditText NombreNegocioT = (EditText) findViewById(R.id.RnombreNegocio);
-        final EditText CorreoT = (EditText) findViewById(R.id.RnombreNegocio);
+     //   final EditText NombreNegocioT = (EditText) findViewById(R.id.RnombreNegocio);
+        final EditText CorreoT = (EditText) findViewById(R.id.RCorreo);
         final EditText CredencialT = (EditText) findViewById(R.id.RCredencial);
-        final EditText DescripcionT = (EditText) findViewById(R.id.Rdescripcion);
+      //  final EditText DescripcionT = (EditText) findViewById(R.id.Rdescripcion);
         Button Registrar = (Button) findViewById(R.id.btnRegistro);
 
         Registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String Nombre = nombreT.getText().toString();
-                String NombreNregocio = NombreNegocioT.getText().toString();
                 String Correo = CorreoT.getText().toString();
                 String Credencial = CredencialT.getText().toString();
-                String Descripcion = DescripcionT.getText().toString();
 
 
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
@@ -50,7 +48,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
                             if(ok == true){
                                 Toast.makeText(RegistroUsuario.this, "Registrado Correctamente", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(RegistroUsuario.this, Login.class);
+                                Intent i = new Intent(RegistroUsuario.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
                             }else{
@@ -63,7 +61,7 @@ public class RegistroUsuario extends AppCompatActivity {
                     }
                 };
 
-                RegistroRequest r = new RegistroRequest(Nombre, NombreNregocio, Correo, Credencial, Descripcion, respuesta);
+                RegistroRequest r = new RegistroRequest(Nombre, Correo, Credencial, respuesta);
                 RequestQueue cola = Volley.newRequestQueue(RegistroUsuario.this);
                 cola.add(r);
             }
