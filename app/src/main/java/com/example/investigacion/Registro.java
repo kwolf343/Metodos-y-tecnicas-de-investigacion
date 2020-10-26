@@ -108,7 +108,6 @@ public class Registro extends AppCompatActivity {
                 }else {
                     SharedPreferences.Editor editor = this.vendedores.edit();
                     editor.putString(KEY, vendedores.getString(KEY,"")+";"+NombreNegocio+"="+NombrePropietario+"="+Informacion+"="+Categoria+"="+Ubicacion+"="+Latitud+"="+Longitud+"="+Clave);
-                    editor.putString(KEY,"");
                     if(editor.commit()){
                         Log.d("TAG","Informacion guardada");
                     }else {

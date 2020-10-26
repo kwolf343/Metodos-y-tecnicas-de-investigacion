@@ -8,10 +8,10 @@
     tools:context=".Lista_Negocios">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listNegocios" 
+        android:id="@+id/listNegocios"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@android:layout/simple_list_item_1"
-        android:background="#E8EAF6" />
+        android:background="@color/cardview_light_background"
+        tools:listitem="@android:layout/simple_list_item_1" />
 </LinearLayout>
 
