@@ -8,6 +8,7 @@ public class Negocio {
     private String Ubicacion;
     private String Coordenada_Latitud;
     private String Coordenada_Longitud;
+    private String Clave;
 
     public String getNombre() {
         return Nombre;
@@ -63,5 +64,13 @@ public class Negocio {
 
     public void setCoordenada_Longitud(String coordenada_Longitud) {
         Coordenada_Longitud = coordenada_Longitud;
+    }
+
+    public String getClave() {
+        return Clave;
+    }
+
+    public void setClave(String clave) {
+        Clave = clave;
     }
 }

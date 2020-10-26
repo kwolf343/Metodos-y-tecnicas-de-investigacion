@@ -24,7 +24,7 @@
     <string name="RegistroNombre">Nombre</string>
     <string name="RegistroNegocio">Nombre del negocio</string>
     <string name="RegistroCorreo">Usuario</string>
-    <string name="RegistroCredencial">Credencial</string>
+    <string name="RegistroCredencial">Clave</string>
     <string name="RegistroDescripcion">Decripcion</string>
     <string name="RegistroBTNregistrar">Registrar</string>
     <string name="btnVerNegocio">Ver Negocio</string>

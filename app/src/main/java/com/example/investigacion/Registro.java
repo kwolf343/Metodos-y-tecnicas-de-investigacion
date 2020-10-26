@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class Registro extends AppCompatActivity {
 
-    private EditText txtNegocio, txtPropietario, txtInfo;
+    private EditText txtNegocio, txtPropietario, txtInfo, txtClave;
     private String Categoria, Ubicacion, Latitud, Longitud;
     private LocationManager ubicacion;
     public static final int ID_CATEGORIAS=1;
@@ -37,6 +37,7 @@ public class Registro extends AppCompatActivity {
         this.txtNegocio = findViewById(R.id.txtNombreNegocio);
         this.txtPropietario = findViewById(R.id.txtNombrePropietario);
         this.txtInfo = findViewById(R.id.txtInfo);
+        this.txtClave = findViewById(R.id.txtClave);
         this.Categoria="";
         this.vendedores = getSharedPreferences(ARCHIVO,MODE_PRIVATE);
     }
@@ -83,16 +84,13 @@ public class Registro extends AppCompatActivity {
         }
         return posUbicacion;
     }
-    public void Ubicacion(View v) {
-        Toast.makeText(this, Ubicacion, Toast.LENGTH_SHORT).show();
-    }
 
     public void Aceptar_onClick(View v){
         this.Ubicacion=obtenerUbicacion();
         String NombreNegocio = txtNegocio.getText().toString();
         String NombrePropietario = txtPropietario.getText().toString();
         String Informacion = txtInfo.getText().toString();
-
+        String Clave = txtClave.getText().toString();
         if(NombreNegocio.equals("") || NombrePropietario.equals("") || Informacion.equals("") || Categoria.equals("")){
             Toast.makeText(this, "Debe completar los datos antes de enviar", Toast.LENGTH_SHORT).show();
         }
@@ -101,7 +99,7 @@ public class Registro extends AppCompatActivity {
                 String lista = vendedores.getString(KEY,"");
                 if(SharedPreferenceVendedores.ListaNegocios(lista).size()==0){
                     SharedPreferences.Editor editor = this.vendedores.edit();
-                    editor.putString(KEY, NombreNegocio+"-"+NombrePropietario+"-"+Informacion+"-"+Categoria+"-"+Ubicacion+"-"+Latitud+"-"+Longitud);
+                    editor.putString(KEY, NombreNegocio+"="+NombrePropietario+"="+Informacion+"="+Categoria+"="+Ubicacion+"="+Latitud+"="+Longitud+"="+Clave);
                     if(editor.commit()){
                         Log.d("TAG","Informacion guardada");
                     }else {
@@ -109,7 +107,8 @@ public class Registro extends AppCompatActivity {
                     }
                 }else {
                     SharedPreferences.Editor editor = this.vendedores.edit();
-                    editor.putString(KEY, vendedores.getString(KEY,"")+";"+NombreNegocio+"-"+NombrePropietario+"-"+Informacion+"-"+Categoria+"-"+Ubicacion+"-"+Latitud+"-"+Longitud);
+                    editor.putString(KEY, vendedores.getString(KEY,"")+";"+NombreNegocio+"="+NombrePropietario+"="+Informacion+"="+Categoria+"="+Ubicacion+"="+Latitud+"="+Longitud+"="+Clave);
+                    editor.putString(KEY,"");
                     if(editor.commit()){
                         Log.d("TAG","Informacion guardada");
                     }else {

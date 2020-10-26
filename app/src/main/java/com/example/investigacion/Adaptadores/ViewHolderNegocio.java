@@ -11,11 +11,8 @@ import com.example.investigacion.R;
 public class ViewHolderNegocio extends RecyclerView.ViewHolder{
 
     private TextView txtNombre;
-    private TextView txtPropietario;
     private TextView txtCategoria;
     private TextView txtUbicacion;
-    private TextView txtLat;
-    private TextView txtLong;
     public ViewHolderNegocio(@NonNull View itemView) {
         super(itemView);
         this.txtNombre = itemView.findViewById(R.id.lblNombre);
