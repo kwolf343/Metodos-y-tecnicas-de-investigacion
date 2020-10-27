@@ -28,6 +28,8 @@ public class ListaCategorias extends AppCompatActivity {
         names.add("Comida mexicana");
         names.add("Comida china");
         names.add("Pizzeria");
+        names.add("Pollo frito");
+        names.add("Comida casera");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
         listview.setAdapter(adapter);
 
